@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: batengine
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: batengine
+  template:
+    metadata:
+      labels:
+        app: batengine
+    spec:
+      containers:
+        - name: batengine
+          image: batpool/main:kubernetes-test-image
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m # 100 millicores
+              memory: 128Mi # 128 megabytes
+            limits:
+              cpu: 200m # 200 millicores
+              memory: 256Mi # 256 megabytes
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 10
