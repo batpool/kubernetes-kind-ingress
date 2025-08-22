@@ -9,6 +9,8 @@
 > **Privately report it** to me at [satyabrata.7059@gmail.com](mailto:satyabrata.7059@gmail.com)
 >
 
+> Image used [kubernetes-test-image](https://github.com/batpool/kubernetes-test-image)
+
 <p align="center">
   <a href="https://github.com/batpool/kubernetes-kind-ingress/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/batpool/kubernetes-kind-ingress" />
